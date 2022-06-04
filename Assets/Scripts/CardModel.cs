@@ -5,26 +5,29 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class CardModel : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHandler
+using DG.Tweening;
+public class CardModel : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHandler,IPointerEnterHandler,IPointerExitHandler
 {
     [SerializeField]
-    private string name;
+    private string _name;
     [SerializeField]
-    private Image image;
+    private Image _image;
     [SerializeField]
-    private CardType type;
+    private CardType _type;
 
     [SerializeField]
     private string space;
     [SerializeField]
     private string player;
+    [SerializeField]
+    private float scale;
 
-    private Transform grid;
-    private Camera camera;
+    private Transform _grid;
+    private Camera _camera;
 
     void Start(){
-        grid = transform.parent;
-        camera = Camera.main;
+        _grid = transform.parent;
+        _camera = Camera.main;
     }
     
     public void OnBeginDrag(PointerEventData pointerData){
@@ -37,20 +40,28 @@ public class CardModel : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHa
         
         Vector3 dropPosition;
         if(!DropOrReturn(out dropPosition)){
-            transform.SetParent(grid);
+            transform.SetParent(_grid);
             return;
         }
         Debug.Log("Card Dropped");
+        DropAnim();
+    }
+
+    public void OnPointerEnter(PointerEventData pointerData){
+        SelectionAnim();
+    }
+    public void OnPointerExit(PointerEventData pointerData){
+        DeselctionAnim();
     }
     
     private bool DropOrReturn(out Vector3 dropPosition){
         dropPosition = Vector3.zero;
-        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit, 100)){
             Debug.Log(hit.collider.name);
             dropPosition = hit.point;
-            if(type == CardType.GEAR){
+            if(_type == CardType.GEAR){
                 Debug.Log("Checking Gear");
                 if(hit.collider.CompareTag(player))
                     return true;
@@ -64,6 +75,18 @@ public class CardModel : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHa
         }
         return false;
 
+    }
+
+    //-Anim
+    private async void SelectionAnim(){
+        GetComponent<RectTransform>().DOScale(Vector3.one*scale,.2f);
+        await GetComponent<RectTransform>().DOBlendablePunchRotation(Vector3.one*2,.25f).AsyncWaitForCompletion();
+    }
+    private async void DeselctionAnim(){
+        await GetComponent<RectTransform>().DOScale(Vector3.one,.2f).AsyncWaitForCompletion();
+    }
+    private async void DropAnim(){
+        await GetComponent<RectTransform>().DOBlendablePunchRotation(Vector3.one*5,.25f,20).AsyncWaitForCompletion();
     }
 }
 
