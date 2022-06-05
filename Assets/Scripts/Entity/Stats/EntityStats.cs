@@ -1,14 +1,10 @@
-﻿using System;
-using UnityEngine;
-
-namespace DefaultNamespace
+﻿namespace DefaultNamespace
 {
-    [Serializable]
-    public class EntityStats: IEntityStats
+    public class EntityStats
     {
-        [field: SerializeField] public int HealthStat { get; private set; }
-        [field: SerializeField] public int MovementStat { get; private set; }
-        [field: SerializeField] public int AttackStat { get; private set; }
-        [field: SerializeField] public int DefenceStat { get; private set; }
+        public Stat Health { get; private set; } = new Stat();
+        public Stat Movement { get; private set; } = new Stat();
+        public Stat Attack { get; private set; } = new Stat();
+        public Stat Defence { get; private set; } = new Stat();
     }
 }

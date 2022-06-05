@@ -4,7 +4,7 @@ namespace DefaultNamespace
 {
     
     [CreateAssetMenu(fileName = "Weapon", menuName = "Equipment/Weapon")]
-    public class WeaponScriptable : Equipment
+    public class WeaponScriptable : EquipmentScriptable
     {
         public override EquipmentTypes Types { get => EquipmentTypes.WEAPON; }
         public override int HealthModifier { get => health; }

@@ -1,6 +1,6 @@
 ﻿namespace DefaultNamespace
 {
-    public interface IEntityStats
+    public interface IBaseEntityStats
     {
         public int HealthStat { get; }
         public int MovementStat { get; }

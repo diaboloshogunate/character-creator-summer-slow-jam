@@ -2,8 +2,8 @@
 {
     public interface IEntityEquipment
     {
-        public HatScriptable Hat { get; set; }
-        public WeaponScriptable Weapon { get; set; }
-        public WingsScriptable Wings { get; set; }
+        public HatScriptable Hat { get; }
+        public WeaponScriptable Weapon { get; }
+        public WingsScriptable Wings { get; }
     }
 }

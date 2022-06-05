@@ -2,7 +2,7 @@
 
 namespace DefaultNamespace
 {
-    public abstract class Equipment : ScriptableObject
+    public abstract class EquipmentScriptable : ScriptableObject
     {
         public abstract EquipmentTypes Types { get; }
         public abstract int HealthModifier { get; }
