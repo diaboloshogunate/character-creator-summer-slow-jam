@@ -87,13 +87,5 @@ namespace DefaultNamespace
             Stats.Attack.Value   = Stats.Attack.Max;
             Stats.Defence.Value  = Stats.Defence.Max;
         }
-
-        public void AddGear(GearProp prop){
-            HealthStat +=prop.Health;
-            AttackStat +=prop.Attack;
-            DefenceStat +=prop.Defense;
-            MovementStat += prop.Movement;
-            props.Add(prop);
-        }
     }
 }
