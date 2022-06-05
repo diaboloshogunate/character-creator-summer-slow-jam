@@ -1,7 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Pathfinding;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -11,19 +10,10 @@ namespace DefaultNamespace
     
     [RequireComponent(typeof(Seeker))]
     [RequireComponent(typeof(AILerp))]
-    public class Entity : MonoBehaviour, IEntityStats, IEntityActions
+    public class Entity : MonoBehaviour, IEntityActions
     {
-        [field: Header("Stats")]
-        [field: SerializeField] public float HealthStat { get; private set; } = 10;
-        [field: SerializeField] public float MovementStat { get; private set; } = 5;
-        [field: SerializeField] public float AttackStat { get; private set; } = 1;
-        [field: SerializeField] public float DefenceStat { get; private set; } = 1;
-        
-        [field: Header("Gear")]
-        private List<GearProp> props;
-
-        [field: Header("References")]
-        [field: SerializeField] private Tilemap Tilemap { get; set; } = null;// todo promote into a service for managing/selecting tiles
+        [field: SerializeField] public CalculatedEntityStats Stats { get; private set; } = null;
+        [field: SerializeField] private Tilemap Tilemap { get; set; } = null; // todo promote into a service for managing/selecting tiles
 
         public Seeker Seeker { get; private set; } = null;
         public AILerp AILerp { get; private set; } = null;
@@ -42,14 +32,14 @@ namespace DefaultNamespace
             
             Path p = Seeker.StartPath (transform.position, cellCenterPosition);
             p.BlockUntilCalculated();// force path to calculate now instead of multithreading
-            if (p.GetTotalLength() > MovementStat) return;
+            if (p.GetTotalLength() > Stats.MovementStat) return;
             AILerp.SetPath(p);
         }
 
-        public void Damage(float amt)
+        public void Damage(int amt)
         {
-            HealthStat -= amt;
-            if (HealthStat <= 0) Die();
+            // BaseStats.HealthStat -= amt;
+            // if (Stats.HealthStat <= 0) Die();
         }
 
         public void Die()
@@ -59,7 +49,7 @@ namespace DefaultNamespace
 
         public void Attack(Entity entity)
         {
-            entity.Damage(AttackStat);
+            entity.Damage(Stats.AttackStat);
         }
 
         public void AddGear(GearProp prop){
