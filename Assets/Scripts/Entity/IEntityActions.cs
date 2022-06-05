@@ -5,7 +5,8 @@ namespace DefaultNamespace
     public interface IEntityActions
     {
         void Move(Vector3 destination);
-        void Damage(float amt);
+        void Damage(int amt);
+        void Heal(int amt);
         void Die();
         void Attack(Entity entity);
     }

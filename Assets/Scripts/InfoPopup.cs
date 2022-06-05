@@ -42,10 +42,10 @@ namespace DefaultNamespace{
                 Entity entity = hit.collider.GetComponent<Entity>();
                 if(entity == null)
                     return;
-                _health.text = "Health:"+entity.HealthStat;
-                _attack.text = "Attack:"+entity.AttackStat;
-                _defense.text = "Defense:"+entity.DefenceStat;
-                _movement.text = "Movement:"+entity.MovementStat;
+                _health.text = "Health:"+entity.Stats.Health.Value;
+                _attack.text = "Attack:"+entity.Stats.Attack.Value;
+                _defense.text = "Defense:"+entity.Stats.Defence.Value;
+                _movement.text = "Movement:"+entity.Stats.Movement;
                 await SelectionAnim();
                 return;
             }

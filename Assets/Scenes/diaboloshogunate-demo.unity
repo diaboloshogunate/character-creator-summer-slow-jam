@@ -419,7 +419,7 @@ PrefabInstance:
     - target: {fileID: 1909361081892201928, guid: 868a070de7edf474fac89e78ce58b37d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1909361081892201928, guid: 868a070de7edf474fac89e78ce58b37d,
         type: 3}
@@ -473,14 +473,168 @@ PrefabInstance:
       objectReference: {fileID: 2102407078}
     - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
         type: 3}
+      propertyPath: <Hat>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 128c8669eaf7dc346b17dd0f3461f713,
+        type: 2}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Wings>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: e53304781b19a7e44a49695089cf2423,
+        type: 2}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Weapon>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 2709184519a9df245b263e560f5417bb,
+        type: 2}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
       propertyPath: <Tilemap>k__BackingField
       value: 
       objectReference: {fileID: 1449247799}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Equipment>k__BackingField.<Hat>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 128c8669eaf7dc346b17dd0f3461f713,
+        type: 2}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Equipment>k__BackingField.<Wings>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: e53304781b19a7e44a49695089cf2423,
+        type: 2}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Equipment>k__BackingField.<Weapon>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 2709184519a9df245b263e560f5417bb,
+        type: 2}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Stats>k__BackingField.<AttackStat>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Stats>k__BackingField.<HealthStat>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Stats>k__BackingField.<DefenceStat>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Stats>k__BackingField.<MovementStat>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <BaseStats>k__BackingField.<AttackStat>k__BackingField
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <BaseStats>k__BackingField.<HealthStat>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <BaseStats>k__BackingField.<DefenceStat>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <BaseStats>k__BackingField.<MovementStat>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Stats>k__BackingField.<Equipment>k__BackingField.<Hat>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 128c8669eaf7dc346b17dd0f3461f713,
+        type: 2}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Stats>k__BackingField.<Equipment>k__BackingField.<Wings>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: e53304781b19a7e44a49695089cf2423,
+        type: 2}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Stats>k__BackingField.<Equipment>k__BackingField.<Weapon>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 2709184519a9df245b263e560f5417bb,
+        type: 2}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Stats>k__BackingField.<BaseStats>k__BackingField.<AttackStat>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Stats>k__BackingField.<BaseStats>k__BackingField.<HealthStat>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Stats>k__BackingField.<BaseStats>k__BackingField.<DefenceStat>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Stats>k__BackingField.<BaseStats>k__BackingField.<MovementStat>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1909361081892201971, guid: 868a070de7edf474fac89e78ce58b37d,
         type: 3}
       propertyPath: m_Name
       value: Entity
       objectReference: {fileID: 0}
+    - target: {fileID: 7729711063690881293, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729711063690881293, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729711063690881293, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729711063690881293, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729711063690881293, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729711063690881293, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729711063690881293, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8867129851160318562, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5f5eca71a785eee4d8965b5321f5934d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 868a070de7edf474fac89e78ce58b37d, type: 3}
 --- !u!1001 &8954016963840909341
@@ -490,6 +644,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4143609659854349050, guid: dd60c08cc99b714488e70fab14579500,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d494b24cfb57554e979e5deee56dbe9, type: 2}
+    - target: {fileID: 4143609659854760230, guid: dd60c08cc99b714488e70fab14579500,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d494b24cfb57554e979e5deee56dbe9, type: 2}
     - target: {fileID: 4206891086825415773, guid: dd60c08cc99b714488e70fab14579500,
         type: 3}
       propertyPath: heuristic

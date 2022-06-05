@@ -24,6 +24,9 @@ namespace DefaultNamespace{
         [SerializeField]
         private float scale;
 
+        [SerializeField] 
+        private EquipmentScriptable _equipmentScriptable;
+
         private Transform _grid;
         private GameObject _highlight;
         private Camera _camera;
@@ -68,10 +71,10 @@ namespace DefaultNamespace{
             if(Physics.Raycast(ray, out hit, 100)){
                 Debug.Log(hit.collider.name);
                 dropPosition = hit.collider.gameObject.transform.position;
-                if(_type == CardType.GEAR){
+                if(_type == CardType.EQUIPMENT){
                     Debug.Log("Checking Gear");
                     if(hit.collider.CompareTag(player))
-                        hit.collider.GetComponent<Entity>().AddGear(GetComponent<GearProp>());
+                        hit.collider.GetComponent<Entity>().Equipment.AddEquipment(_equipmentScriptable);
                         return true;
                 }
                 else{
@@ -105,7 +108,7 @@ namespace DefaultNamespace{
     }
 
     public enum CardType{
-        GEAR,
+        EQUIPMENT,
         TRAP,
         MOB
     }
