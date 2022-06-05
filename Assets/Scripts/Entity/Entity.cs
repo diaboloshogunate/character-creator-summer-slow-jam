@@ -14,7 +14,7 @@ namespace DefaultNamespace
     {
         [field: SerializeField] public BaseBaseEntityStats BaseStats { get; private set; } = null;
         [field: SerializeField] public EntityEquipment Equipment { get; private set; } = null;
-        public EntityStats Stats { get; private set; } = null;
+        public EntityStats Stats { get; private set; } = new EntityStats();
         [field: SerializeField] private Tilemap Tilemap { get; set; } = null; // todo promote into a service for managing/selecting tiles
 
         public Seeker Seeker { get; private set; } = null;
@@ -74,10 +74,10 @@ namespace DefaultNamespace
 
         private void UpdateMaxStats()
         {
-            Stats.Health.Max   = BaseStats.HealthStat + Equipment.Sum(equipment => equipment.HealthModifier);
-            Stats.Movement.Max = BaseStats.MovementStat + Equipment.Sum(equipment => equipment.MovementModifier);
-            Stats.Attack.Max   = BaseStats.AttackStat + Equipment.Sum(equipment => equipment.AttackModifier);
-            Stats.Defence.Max  = BaseStats.DefenceStat + Equipment.Sum(equipment => equipment.DefenceModifier);
+            Stats.Health.Max   = BaseStats.HealthStat + Equipment.Sum(equipment => equipment ? equipment.HealthModifier : 0);
+            Stats.Movement.Max = BaseStats.MovementStat + Equipment.Sum(equipment => equipment ? equipment.MovementModifier : 0);
+            Stats.Attack.Max   = BaseStats.AttackStat + Equipment.Sum(equipment => equipment ? equipment.AttackModifier : 0);
+            Stats.Defence.Max  = BaseStats.DefenceStat + Equipment.Sum(equipment => equipment ? equipment.DefenceModifier : 0);
         }
 
         private void SetStatsValueToMax()
