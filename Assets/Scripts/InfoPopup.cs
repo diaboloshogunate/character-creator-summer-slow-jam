@@ -30,8 +30,9 @@ namespace DefaultNamespace{
         // Update is called once per frame
         void Update()
         {
-            if(!_isSelected)
+            if(Input.GetMouseButtonDown(0))
                 CheckWorldSpace();
+            
         }
         private async void CheckWorldSpace(){
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
@@ -42,9 +43,9 @@ namespace DefaultNamespace{
                 if(entity == null)
                     return;
                 _health.text = "Health:"+entity.HealthStat;
-                _attack.text = "Health:"+entity.AttackStat;
-                _defense.text = "Health:"+entity.DefenceStat;
-                _movement.text = "Health:"+entity.MovementStat;
+                _attack.text = "Attack:"+entity.AttackStat;
+                _defense.text = "Defense:"+entity.DefenceStat;
+                _movement.text = "Movement:"+entity.MovementStat;
                 await SelectionAnim();
                 return;
             }
@@ -54,6 +55,7 @@ namespace DefaultNamespace{
             }
 
         }
+
 
 
         //-Anim
