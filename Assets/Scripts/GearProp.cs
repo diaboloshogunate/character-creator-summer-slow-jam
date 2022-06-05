@@ -7,6 +7,9 @@ namespace DefaultNamespace{
     public class GearProp : MonoBehaviour
     {
         [SerializeField]
+        private GearType type;
+        public GearType Type{get=>type;}
+        [SerializeField]
         private float health;
         public float Health{get=>health;}
         [SerializeField]
@@ -18,5 +21,12 @@ namespace DefaultNamespace{
         [SerializeField]
         private float movement;
         public float Movement{get=>movement;}
+    }
+
+    public enum GearType{
+        WEAPON,
+        ARMOR,
+        CLOTHING,
+        SHOES
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,14 +38,15 @@ namespace DefaultNamespace{
         public void OnDrag(PointerEventData pointerData){
             transform.position = Input.mousePosition;
         }
-        public void OnEndDrag(PointerEventData pointerData){
+        public async void OnEndDrag(PointerEventData pointerData){
             
             Vector3 dropPosition;
             if(!DropOrReturn(out dropPosition)){
                 transform.SetParent(_grid);
                 return;
             }
-            DropAnim();
+            await DropAnim();
+            gameObject.SetActive(false);
         }
 
         public void OnPointerEnter(PointerEventData pointerData){
@@ -71,8 +73,7 @@ namespace DefaultNamespace{
                     Debug.Log("Checking Trap");
                     if(hit.collider.CompareTag(space))
                         return true;
-                }
-                    
+                }    
             }
             return false;
 
@@ -86,9 +87,10 @@ namespace DefaultNamespace{
         private async void DeselctionAnim(){
             await GetComponent<RectTransform>().DOScale(Vector3.one,.2f).AsyncWaitForCompletion();
         }
-        private async void DropAnim(){
+        private async Task<bool> DropAnim(){
             await GetComponent<RectTransform>().DOBlendablePunchRotation(Vector3.one*5,.25f,20).AsyncWaitForCompletion();
             await GetComponent<RectTransform>().DOScale(Vector3.zero,.5f).AsyncWaitForCompletion();
+            return true;
         }
     }
 

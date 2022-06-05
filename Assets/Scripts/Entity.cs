@@ -21,7 +21,6 @@ namespace DefaultNamespace
         
         [field: Header("Gear")]
         private List<GearProp> props;
-        // todo
 
         [field: Header("References")]
         [field: SerializeField] private Tilemap Tilemap { get; set; } = null;// todo promote into a service for managing/selecting tiles
