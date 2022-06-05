@@ -414,7 +414,7 @@ PrefabInstance:
     - target: {fileID: 1909361081892201928, guid: 868a070de7edf474fac89e78ce58b37d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.66
+      value: 3.57
       objectReference: {fileID: 0}
     - target: {fileID: 1909361081892201928, guid: 868a070de7edf474fac89e78ce58b37d,
         type: 3}
@@ -531,6 +531,44 @@ PrefabInstance:
         type: 3}
       propertyPath: <Stats>k__BackingField.<MovementStat>k__BackingField
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Stats>k__BackingField.<Equipment>k__BackingField.<Hat>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 128c8669eaf7dc346b17dd0f3461f713,
+        type: 2}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Stats>k__BackingField.<Equipment>k__BackingField.<Wings>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: e53304781b19a7e44a49695089cf2423,
+        type: 2}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Stats>k__BackingField.<Equipment>k__BackingField.<Weapon>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 2709184519a9df245b263e560f5417bb,
+        type: 2}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Stats>k__BackingField.<BaseStats>k__BackingField.<AttackStat>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Stats>k__BackingField.<BaseStats>k__BackingField.<HealthStat>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Stats>k__BackingField.<BaseStats>k__BackingField.<DefenceStat>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <Stats>k__BackingField.<BaseStats>k__BackingField.<MovementStat>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1909361081892201971, guid: 868a070de7edf474fac89e78ce58b37d,
         type: 3}
