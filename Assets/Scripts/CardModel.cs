@@ -25,11 +25,16 @@ namespace DefaultNamespace{
         private float scale;
 
         private Transform _grid;
+        private GameObject _highlight;
         private Camera _camera;
 
         void Start(){
             _grid = transform.parent;
+            _highlight = transform.Find("Highlight").gameObject;
             _camera = Camera.main;
+
+            _highlight.SetActive(false);
+            GetComponent<RectTransform>().DOMoveY(0,.2f);
         }
         
         public void OnBeginDrag(PointerEventData pointerData){
@@ -81,11 +86,16 @@ namespace DefaultNamespace{
 
         //-Anim
         private async void SelectionAnim(){
+            _highlight.SetActive(true);
             GetComponent<RectTransform>().DOScale(Vector3.one*scale,.2f);
+            GetComponent<RectTransform>().DOMoveY(100,.2f);
             await GetComponent<RectTransform>().DOBlendablePunchRotation(Vector3.one*2,.25f).AsyncWaitForCompletion();
         }
         private async void DeselctionAnim(){
-            await GetComponent<RectTransform>().DOScale(Vector3.one,.2f).AsyncWaitForCompletion();
+            _highlight.SetActive(false);
+            GetComponent<RectTransform>().DOMoveY(0,.2f);
+            GetComponent<RectTransform>().DOScale(Vector3.one,.2f);
+            
         }
         private async Task<bool> DropAnim(){
             await GetComponent<RectTransform>().DOBlendablePunchRotation(Vector3.one*5,.25f,20).AsyncWaitForCompletion();
