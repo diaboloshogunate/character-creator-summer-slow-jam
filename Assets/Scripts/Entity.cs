@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
 using Pathfinding;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -17,7 +20,7 @@ namespace DefaultNamespace
         [field: SerializeField] public float DefenceStat { get; private set; } = 1;
         
         [field: Header("Gear")]
-        // todo
+        private List<GearProp> props;
 
         [field: Header("References")]
         [field: SerializeField] private Tilemap Tilemap { get; set; } = null;// todo promote into a service for managing/selecting tiles
@@ -29,6 +32,8 @@ namespace DefaultNamespace
         {
             Seeker = GetComponent<Seeker>();
             AILerp = GetComponent<AILerp>();
+            
+            props = new List<GearProp>();
         }
 
         public void Move(Vector3 destination)
@@ -55,6 +60,14 @@ namespace DefaultNamespace
         public void Attack(Entity entity)
         {
             entity.Damage(AttackStat);
+        }
+
+        public void AddGear(GearProp prop){
+            HealthStat +=prop.Health;
+            AttackStat +=prop.Attack;
+            DefenceStat +=prop.Defense;
+            MovementStat += prop.Movement;
+            props.Add(prop);
         }
     }
 }
