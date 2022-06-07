@@ -28,10 +28,9 @@ namespace DefaultNamespace
         public void RemoveEquipment(EquipmentScriptable equipmentScriptable)
         {
             if (Hat == equipmentScriptable) Hat = null;
-            else if (Weapon == equipmentScriptable) Hat = null;
-            else if (Wings == equipmentScriptable) Hat = null;
+            else if (Weapon == equipmentScriptable) Weapon = null;
+            else if (Wings == equipmentScriptable) Wings = null;
             else return;
-            
             RemovedEvent?.Invoke(equipmentScriptable);
         }
 

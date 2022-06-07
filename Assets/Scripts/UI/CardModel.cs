@@ -97,7 +97,7 @@ namespace DefaultNamespace{
         private async void DeselctionAnim(){
             _highlight.SetActive(false);
             GetComponent<RectTransform>().DOMoveY(0,.2f);
-            GetComponent<RectTransform>().DOScale(Vector3.one,.2f);
+            await GetComponent<RectTransform>().DOScale(Vector3.one,.2f).AsyncWaitForCompletion();
             
         }
         private async Task<bool> DropAnim(){
