@@ -45,7 +45,6 @@ namespace DefaultNamespace
         public void Move(Vector3 destination)
         {
             Vector3 cellCenterPosition = GameManager.Instance.Tilemap.GetCellCenterWorld(GameManager.Instance.Tilemap.WorldToCell(destination));
-            
             Path p = Seeker.StartPath (transform.position, cellCenterPosition);
             p.BlockUntilCalculated();// force path to calculate now instead of multithreading
             if (p.GetTotalLength() > Stats.Movement.Value) return;
