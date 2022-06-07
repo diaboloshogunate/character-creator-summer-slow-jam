@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using Pathfinding;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 namespace DefaultNamespace
 {
@@ -15,7 +12,6 @@ namespace DefaultNamespace
         [field: SerializeField] public BaseBaseEntityStats BaseStats { get; private set; } = null;
         [field: SerializeField] public EntityEquipment Equipment { get; private set; } = null;
         public EntityStats Stats { get; private set; } = new EntityStats();
-        [field: SerializeField] private Tilemap Tilemap { get; set; } = null; // todo promote into a service for managing/selecting tiles
 
         public Seeker Seeker { get; private set; } = null;
         public AILerp AILerp { get; private set; } = null;
@@ -48,7 +44,7 @@ namespace DefaultNamespace
 
         public void Move(Vector3 destination)
         {
-            Vector3 cellCenterPosition = Tilemap.GetCellCenterWorld(Tilemap.WorldToCell(destination));
+            Vector3 cellCenterPosition = GameManager.Instance.Tilemap.GetCellCenterWorld(GameManager.Instance.Tilemap.WorldToCell(destination));
             
             Path p = Seeker.StartPath (transform.position, cellCenterPosition);
             p.BlockUntilCalculated();// force path to calculate now instead of multithreading
