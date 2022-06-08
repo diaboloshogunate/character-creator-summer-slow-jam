@@ -496,6 +496,7 @@ MonoBehaviour:
     <Hat>k__BackingField: {fileID: 0}
     <Weapon>k__BackingField: {fileID: 0}
     <Wings>k__BackingField: {fileID: 0}
+  wingHolder: {fileID: 0}
 --- !u!114 &285025606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1898,6 +1899,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: wingHolder
+      value: 
+      objectReference: {fileID: 1717070812}
     - target: {fileID: 1909361081892201971, guid: 868a070de7edf474fac89e78ce58b37d,
         type: 3}
       propertyPath: m_Name
@@ -2237,6 +2243,12 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5581215901067948881, guid: 18571c46eedf3e549b3ac057437a2e1b,
     type: 3}
   m_PrefabInstance: {fileID: 1273651109}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1717070812 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7470274123481855685, guid: 868a070de7edf474fac89e78ce58b37d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1056499226}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1751064386
 GameObject:

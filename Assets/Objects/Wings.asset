@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d24ea2850834cca8dc18e0a4ba3a0d6, type: 3}
   m_Name: Wings
   m_EditorClassIdentifier: 
+  prefab: {fileID: 7878519734436094517, guid: 06be2d7b1d47e5c43ae32f7d3cfba117, type: 3}
   health: 0
   movement: 0
   attack: 0

@@ -76,7 +76,7 @@ namespace DefaultNamespace{
                 temp.GetComponent<Button>().onClick.AddListener(()=>RemoveEquipment(temp.transform));});
         }
         private async void RemoveEquipment(Transform item){
-            await item.DOPunchRotation(Vector3.one * 4 ,.5f).AsyncWaitForCompletion();
+            item.DOPunchRotation(Vector3.one * 4 ,.5f);
             await item.DOScale(Vector3.zero,.5f).AsyncWaitForCompletion();
             _entity.Equipment.RemoveEquipment(item.GetComponent<EquipmentUI>().equipmentScriptable);
         }
