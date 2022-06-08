@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d6198de4904b349a424d9c26c2c8d4, type: 3}
   m_Name: Weapon
   m_EditorClassIdentifier: 
+  prefab: {fileID: 7878519734436094517, guid: 06be2d7b1d47e5c43ae32f7d3cfba117, type: 3}
   health: 0
   movement: 0
   attack: 10

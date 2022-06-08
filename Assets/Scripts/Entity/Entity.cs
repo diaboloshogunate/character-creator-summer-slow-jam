@@ -1,6 +1,7 @@
 using System.Linq;
 using Pathfinding;
 using UnityEngine;
+using DG.Tweening;
 
 namespace DefaultNamespace
 {
@@ -15,6 +16,8 @@ namespace DefaultNamespace
 
         public Seeker Seeker { get; private set; } = null;
         public AILerp AILerp { get; private set; } = null;
+
+        [SerializeField] private Transform wingHolder;
 
         private void Start()
         {
@@ -39,8 +42,8 @@ namespace DefaultNamespace
             Equipment.RemovedEvent -= OnEquipmentRemovedEvent;
         }
         
-        private void OnEquipmentAddedEvent(EquipmentScriptable arg0) => UpdateMaxStats();
-        private void OnEquipmentRemovedEvent(EquipmentScriptable arg0) => UpdateMaxStats();
+        private void OnEquipmentAddedEvent(EquipmentScriptable arg0) {UpdateMaxStats(); AddGearMesh(arg0);}
+        private void OnEquipmentRemovedEvent(EquipmentScriptable arg0) {UpdateMaxStats(); RemoveGearMesh(arg0);}
 
         public void Move(Vector3 destination)
         {
@@ -82,5 +85,30 @@ namespace DefaultNamespace
             Stats.Attack.Value   = Stats.Attack.Max;
             Stats.Defence.Value  = Stats.Defence.Max;
         }
+
+        private async void AddGearMesh(EquipmentScriptable arg0){
+            GameObject obj = Instantiate(arg0.Prefab,transform) as GameObject;
+            if(arg0 is HatScriptable) obj.transform.SetParent(wingHolder);
+            else if(arg0 is WeaponScriptable) obj.transform.SetParent(wingHolder);
+            else if (arg0 is WingsScriptable)obj.transform.SetParent(wingHolder);
+            obj.transform.position = Vector3.zero;
+            obj.transform.rotation = Quaternion.identity;
+
+            
+            await obj.transform.DOScale(Vector3.one,.5f).AsyncWaitForCompletion();
+            obj.transform.DOPunchRotation(Vector3.one*3,.2f);
+        }
+        private void RemoveGearMesh(EquipmentScriptable arg0){
+            if(arg0 is HatScriptable) Remove(wingHolder.GetChild(0).gameObject);
+            else if(arg0 is WeaponScriptable) Remove(wingHolder.GetChild(0).gameObject);
+            else if (arg0 is WingsScriptable) Remove(wingHolder.GetChild(0).gameObject);
+        }
+
+        private async void Remove(GameObject item){
+            item.transform.DOShakeScale(.5f,.5f);
+            await item.transform.DOScale(Vector3.zero,1f).AsyncWaitForCompletion();         
+            Destroy(item);
+        }
+
     }
 }
