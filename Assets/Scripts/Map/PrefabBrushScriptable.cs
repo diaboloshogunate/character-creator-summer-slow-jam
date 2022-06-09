@@ -1,3 +1,4 @@
+#if (UNITY_EDITOR) 
 using UnityEditor.Tilemaps;
 using UnityEngine;
 
@@ -10,3 +11,4 @@ using UnityEngine;
 public class PrefabBrushScriptable : GameObjectBrush
 {
 }
+#endif
