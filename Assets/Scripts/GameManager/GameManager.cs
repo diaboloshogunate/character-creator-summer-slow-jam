@@ -20,7 +20,6 @@ namespace DefaultNamespace
             }
         }
         
-        public GameState GameState { get; private set; } = null;
         public EventManager EventManager { get; private set; } = new EventManager();
         [field: SerializeField] public Tilemap Tilemap { get; private set; } = null;
         public List<Entity> PlayerPieces { get; private set; } = new List<Entity>();
@@ -34,8 +33,6 @@ namespace DefaultNamespace
 
         private void Awake()
         {
-            GameState = new PlayerBeginState();
-            GameState.Enter(null, this);
         }
 
         private void Start()
