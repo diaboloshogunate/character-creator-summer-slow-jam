@@ -62,6 +62,11 @@ namespace DefaultNamespace
 
         public void Attack(Entity entity) => entity.Damage(Stats.Attack.Value);
 
+        public void Refresh()
+        {
+            // todo
+        }
+
         private void UpdateMinStats()
         {
             Stats.Health.Min   = 0;

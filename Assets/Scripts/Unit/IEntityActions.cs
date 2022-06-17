@@ -9,5 +9,6 @@ namespace DefaultNamespace
         void Heal(int amt);
         void Die();
         void Attack(Entity entity);
+        void Refresh();
     }
 }
