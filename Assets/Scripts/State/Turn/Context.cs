@@ -6,10 +6,12 @@ namespace State.Turn
     public class Context
     {
         public List<Entity> OurUnits { get; private set; }
+        public bool IsPlayersTurn { get; private set; }
 
-        public Context(List<Entity> ourUnits)
+        public Context(bool isPlayersTurn, List<Entity> ourUnits)
         {
-            OurUnits = ourUnits;
+            IsPlayersTurn = isPlayersTurn;
+            OurUnits      = ourUnits;
         }
     }
 }
