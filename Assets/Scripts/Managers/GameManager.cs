@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Factory;
 using State.Turn;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -8,6 +9,14 @@ namespace DefaultNamespace
     public class GameManager : MonoBehaviour
     {
         [field: SerializeField] public Tilemap Tilemap { get; private set; }
+
+        [field: SerializeField] public Unit UnitFactory { get; private set; }
+        
+        [field: SerializeField] public Collider PlayerSpawnBounds { get; private set; }
+
+        [field: SerializeField] public Collider EnemySpawnBounds { get; private set; }
+        
+        [field: SerializeField] public LayerMask UnitLayersMask { get; private set; }
         
         private static GameManager _instance;
 
@@ -32,7 +41,17 @@ namespace DefaultNamespace
 
         private void Awake()
         {
-            Context = new Context(TurnManager, false, EnemyUnits, PlayerUnits);
+            Context = new Context(
+                TurnManager, 
+                UnitFactory, 
+                EnemySpawnBounds, 
+                PlayerSpawnBounds, 
+                1,
+                false, 
+                EnemyUnits, 
+                PlayerUnits, 
+                UnitLayersMask
+            );
             TurnManager.Transition(new BeginPhase(Context));
         }
     }
