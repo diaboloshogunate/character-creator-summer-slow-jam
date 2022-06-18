@@ -9,11 +9,11 @@ namespace Factory
         [field: SerializeField] private GameObject EnemyUnit { get; set; }
         [field: SerializeField] private GameObject PlayerUnit { get; set; }
 
-        public Entity BuildUnit(bool isPlayerUnit)
+        public DefaultNamespace.Unit BuildUnit(bool isPlayerUnit)
         {
             GameObject obj = Instantiate(isPlayerUnit ? PlayerUnit : EnemyUnit);
 
-            return obj.GetComponent<Entity>();
+            return obj.GetComponent<DefaultNamespace.Unit>();
         }
     }
 }

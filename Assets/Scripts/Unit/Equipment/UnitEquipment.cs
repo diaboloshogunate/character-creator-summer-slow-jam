@@ -6,7 +6,7 @@ using UnityEngine.Events;
 namespace DefaultNamespace
 {
     [Serializable]
-    public class EntityEquipment: IEnumerable<EquipmentScriptable>, IEntityEquipment
+    public class UnitEquipment: IEnumerable<EquipmentScriptable>, IUnitEquipment
     {
         [field: SerializeField] public HatScriptable Hat { get; private set; } = null;
         [field: SerializeField] public WeaponScriptable Weapon { get; private set; } = null;

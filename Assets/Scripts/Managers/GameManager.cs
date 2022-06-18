@@ -10,7 +10,7 @@ namespace DefaultNamespace
     {
         [field: SerializeField] public Tilemap Tilemap { get; private set; }
 
-        [field: SerializeField] public Unit UnitFactory { get; private set; }
+        [field: SerializeField] public Factory.Unit UnitFactory { get; private set; }
         
         [field: SerializeField] public Collider PlayerSpawnBounds { get; private set; }
 
@@ -35,9 +35,9 @@ namespace DefaultNamespace
         
         private Context Context { get; set; }
 
-        private List<Entity> PlayerUnits { get; set; } = new List<Entity>();
+        private List<Unit> PlayerUnits { get; set; } = new List<Unit>();
 
-        private List<Entity> EnemyUnits { get; set; } = new List<Entity>();
+        private List<Unit> EnemyUnits { get; set; } = new List<Unit>();
 
         private void Awake()
         {

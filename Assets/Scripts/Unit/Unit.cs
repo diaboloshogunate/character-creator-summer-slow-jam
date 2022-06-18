@@ -8,10 +8,10 @@ namespace DefaultNamespace
     
     [RequireComponent(typeof(Seeker))]
     [RequireComponent(typeof(AILerp))]
-    public class Entity : MonoBehaviour, IEntityActions
+    public class Unit : MonoBehaviour, IUnitActions
     {
         [field: SerializeField] public BaseBaseEntityStats BaseStats { get; private set; } = null;
-        [field: SerializeField] public EntityEquipment Equipment { get; private set; } = null;
+        [field: SerializeField] public UnitEquipment Equipment { get; private set; } = null;
         public EntityStats Stats { get; private set; } = new EntityStats();
 
         public Seeker Seeker { get; private set; } = null;
@@ -60,7 +60,7 @@ namespace DefaultNamespace
 
         public void Die() => Destroy(gameObject);
 
-        public void Attack(Entity entity) => entity.Damage(Stats.Attack.Value);
+        public void Attack(Unit unit) => unit.Damage(Stats.Attack.Value);
 
         public void Refresh()
         {

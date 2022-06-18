@@ -31,8 +31,9 @@ namespace State.Turn.AI
                 GraphNode spawnNode = spawnPoints[spawnIndex];
                 spawnPoints.RemoveAt(spawnIndex);
 
-                Entity unit = Context.UnitFactory.BuildUnit(false);
+                Unit unit = Context.UnitFactory.BuildUnit(false);
                 unit.gameObject.transform.position = (Vector3)spawnNode.position;
+                Context.OurUnits.Add(unit);
             }
         }
     }

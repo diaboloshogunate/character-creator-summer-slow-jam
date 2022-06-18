@@ -52,14 +52,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <BaseStats>k__BackingField:
-    <HealthStat>k__BackingField: 0
-    <MovementStat>k__BackingField: 0
-    <AttackStat>k__BackingField: 0
+    <HealthStat>k__BackingField: 10
+    <MovementStat>k__BackingField: 5
+    <AttackStat>k__BackingField: 5
     <DefenceStat>k__BackingField: 0
   <Equipment>k__BackingField:
     <Hat>k__BackingField: {fileID: 0}
     <Weapon>k__BackingField: {fileID: 0}
     <Wings>k__BackingField: {fileID: 0}
+  wingHolder: {fileID: 0}
 --- !u!114 &1909361081892201934
 MonoBehaviour:
   m_ObjectHideFlags: 0

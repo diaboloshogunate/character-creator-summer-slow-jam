@@ -1,6 +1,6 @@
 ﻿namespace DefaultNamespace
 {
-    public interface IEntityEquipment
+    public interface IUnitEquipment
     {
         public HatScriptable Hat { get; }
         public WeaponScriptable Weapon { get; }
