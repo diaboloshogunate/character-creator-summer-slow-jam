@@ -1,7 +1,9 @@
+using System;
 using System.Linq;
 using Pathfinding;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Tilemaps;
 
 namespace DefaultNamespace
 {
@@ -11,6 +13,7 @@ namespace DefaultNamespace
     public class Unit : MonoBehaviour, IUnitActions
     {
         [field: SerializeField] public BaseBaseEntityStats BaseStats { get; private set; } = null;
+        [field: SerializeField] public Vector3 DefaultTarget { get; set; } = Vector3.zero;
         [field: SerializeField] public UnitEquipment Equipment { get; private set; } = null;
         public EntityStats Stats { get; private set; } = new EntityStats();
 
@@ -19,10 +22,14 @@ namespace DefaultNamespace
 
         [SerializeField] private Transform wingHolder;
 
-        private void Start()
+        private void Awake()
         {
             Seeker = GetComponent<Seeker>();
             AILerp = GetComponent<AILerp>();
+        }
+
+        private void Start()
+        {
             UpdateMinStats();
             UpdateMaxStats();
             SetStatsValueToMax();
@@ -47,11 +54,21 @@ namespace DefaultNamespace
 
         public void Move(Vector3 destination)
         {
-            Vector3 cellCenterPosition = GameManager.Instance.Tilemap.GetCellCenterWorld(GameManager.Instance.Tilemap.WorldToCell(destination));
-            Path p = Seeker.StartPath (transform.position, cellCenterPosition);
-            p.BlockUntilCalculated();// force path to calculate now instead of multithreading
-            if (p.GetTotalLength() > Stats.Movement.Value) return;
-            AILerp.SetPath(p);
+            Tilemap map = GameManager.Instance.Tilemap;
+            Vector3 cellCenterPosition = map.GetCellCenterWorld(map.WorldToCell(destination));
+            Path fullPath = Seeker.StartPath(transform.position, cellCenterPosition);
+            fullPath.BlockUntilCalculated();// force path to calculate now instead of multithreading
+            float cost = fullPath.path.Sum(node => fullPath.GetTraversalCost(node));
+            
+            // this is horrible. will need to find a better astar option since this one does not expose what I need resulting in crap like this
+            while (cost > Stats.Movement.Value)
+            {
+                fullPath.path.RemoveAt(fullPath.path.Count - 1);
+                cost = fullPath.path.Sum(node => fullPath.GetTraversalCost(node));
+            }
+            
+            Path reducedPath = Seeker.StartPath(transform.position, (Vector3) fullPath.path.Last().position);
+            reducedPath.BlockUntilCalculated();// force path to calculate now instead of multithreading
         }
 
         public void Damage(int amt) => Stats.Health.Value -= Mathf.Max(Stats.Defence.Value - amt, 0);

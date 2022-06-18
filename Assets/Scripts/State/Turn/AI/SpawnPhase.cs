@@ -35,6 +35,8 @@ namespace State.Turn.AI
                 unit.gameObject.transform.position = (Vector3)spawnNode.position;
                 Context.OurUnits.Add(unit);
             }
+            
+            Context.StateMachine.Transition(new ActionPhase(Context));
         }
     }
 }

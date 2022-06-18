@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Factory;
 using State.Turn;
 using UnityEngine;
@@ -40,6 +41,11 @@ namespace DefaultNamespace
         private List<Unit> EnemyUnits { get; set; } = new List<Unit>();
 
         private void Awake()
+        {
+            _instance = this;
+        }
+
+        private void Start()
         {
             Context = new Context(
                 TurnManager, 

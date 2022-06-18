@@ -15,17 +15,17 @@ PrefabInstance:
     - target: {fileID: 1909361081892201928, guid: 868a070de7edf474fac89e78ce58b37d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.23
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1909361081892201928, guid: 868a070de7edf474fac89e78ce58b37d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.083
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1909361081892201928, guid: 868a070de7edf474fac89e78ce58b37d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1909361081892201928, guid: 868a070de7edf474fac89e78ce58b37d,
         type: 3}
@@ -62,15 +62,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1909361081892201935, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: <DefaultTarget>k__BackingField.x
+      value: -24.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1909361081892201971, guid: 868a070de7edf474fac89e78ce58b37d,
         type: 3}
       propertyPath: m_Name
-      value: Dog Variant
+      value: EnemyUnit
       objectReference: {fileID: 0}
     - target: {fileID: 6921649922815292343, guid: 868a070de7edf474fac89e78ce58b37d,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7470274123481855685, guid: 868a070de7edf474fac89e78ce58b37d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7729711063690881293, guid: 868a070de7edf474fac89e78ce58b37d,
         type: 3}

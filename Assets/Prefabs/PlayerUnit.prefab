@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1909361081892201932}
   - component: {fileID: 1909361081892201933}
   - component: {fileID: 2372819746235443361}
-  - component: {fileID: 1378655102}
   m_Layer: 6
   m_Name: PlayerUnit
   m_TagString: Player
@@ -56,6 +55,7 @@ MonoBehaviour:
     <MovementStat>k__BackingField: 5
     <AttackStat>k__BackingField: 5
     <DefenceStat>k__BackingField: 0
+  <DefaultTarget>k__BackingField: {x: 24.5, y: 0, z: 0.5}
   <Equipment>k__BackingField:
     <Hat>k__BackingField: {fileID: 0}
     <Weapon>k__BackingField: {fileID: 0}
@@ -86,7 +86,7 @@ MonoBehaviour:
       m_Bits: 4294967295
     useGraphRaycasting: 0
   traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  tagPenalties: 0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
 --- !u!114 &1909361081892201932
@@ -133,19 +133,6 @@ MonoBehaviour:
   version: 1
   target: {fileID: 0}
 --- !u!65 &2372819746235443361
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909361081892201971}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &1378655102
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
