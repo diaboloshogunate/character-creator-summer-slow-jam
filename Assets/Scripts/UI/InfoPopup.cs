@@ -15,7 +15,7 @@ namespace DefaultNamespace{
         private Text _health,_movement,_attack,_defense;
         private Transform _grid;
         private Camera _camera;
-        private Entity _entity;
+        private Unit _unit;
 
         // Start is called before the first frame update
         void Start()
@@ -48,15 +48,15 @@ namespace DefaultNamespace{
                     return;
                 }
 
-                _entity = hit.collider.GetComponent<Entity>();
-                if(_entity == null)
+                _unit = hit.collider.GetComponent<Unit>();
+                if(_unit == null)
                     return;
-                _health.text = "Health:"+_entity.Stats.Health.Value;
-                _attack.text = "Attack:"+_entity.Stats.Attack.Value;
-                _defense.text = "Defense:"+_entity.Stats.Defence.Value;
-                _movement.text = "Movement:"+_entity.Stats.Movement;
-                _entity.Equipment.AddedEvent += EquipmentUpdated;
-                _entity.Equipment.RemovedEvent += EquipmentUpdated;
+                _health.text = "Health:"+_unit.Stats.Health.Value;
+                _attack.text = "Attack:"+_unit.Stats.Attack.Value;
+                _defense.text = "Defense:"+_unit.Stats.Defence.Value;
+                _movement.text = "Movement:"+_unit.Stats.Movement;
+                _unit.Equipment.AddedEvent += EquipmentUpdated;
+                _unit.Equipment.RemovedEvent += EquipmentUpdated;
                 FillEquipmentGrid();
                 await SelectionAnim();
                 return;
@@ -68,7 +68,7 @@ namespace DefaultNamespace{
         private  void FillEquipmentGrid(){
             foreach(Transform child in _grid)
                 Destroy(child.gameObject);
-            _entity.Equipment.ToList().ForEach((item)=>{
+            _unit.Equipment.ToList().ForEach((item)=>{
                 if(item==null)
                     return;
                 GameObject temp = Instantiate(equpimentPrefab,_grid) as GameObject;
@@ -78,7 +78,7 @@ namespace DefaultNamespace{
         private async void RemoveEquipment(Transform item){
             item.DOPunchRotation(Vector3.one * 4 ,.5f);
             await item.DOScale(Vector3.zero,.5f).AsyncWaitForCompletion();
-            _entity.Equipment.RemoveEquipment(item.GetComponent<EquipmentUI>().equipmentScriptable);
+            _unit.Equipment.RemoveEquipment(item.GetComponent<EquipmentUI>().equipmentScriptable);
         }
         private void EquipmentUpdated(EquipmentScriptable arg0){
             FillEquipmentGrid();

@@ -74,7 +74,7 @@ namespace DefaultNamespace{
                 if(_type == CardType.EQUIPMENT){
                     Debug.Log("Checking Gear");
                     if(hit.collider.CompareTag(player))
-                        hit.collider.GetComponent<Entity>().Equipment.AddEquipment(_equipmentScriptable);
+                        hit.collider.GetComponent<Unit>().Equipment.AddEquipment(_equipmentScriptable);
                         return true;
                 }
                 else{
