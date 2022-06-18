@@ -480,7 +480,7 @@ MonoBehaviour:
   minBoundsHeight: 1
   penaltyDelta: 0
   modifyWalkability: 0
-  setWalkability: 0
+  setWalkability: 1
   applyOnStart: 1
   applyOnScan: 1
   updatePhysics: 0
