@@ -71,10 +71,14 @@ namespace DefaultNamespace
             
             Path reducedPath = Seeker.StartPath(transform.position, (Vector3) fullPath.path.Last().position);
             reducedPath.BlockUntilCalculated();// force path to calculate now instead of multithreading
+            Vector3 targetPosition = (Vector3)reducedPath.path.Last().position;
+            float distanceFromTarget = Vector3.Distance(transform.position, targetPosition);
 
-            float distanceFromTarget = Vector3.Distance(transform.position, (Vector3) reducedPath.path.Last().position);
-            if (distanceFromTarget >= 0.001f) 
+            while (distanceFromTarget >= 0.1f)
+            {
+                distanceFromTarget = Vector3.Distance(transform.position, targetPosition);
                 await Task.Yield();
+            }
         }
 
         public async Task Damage(int amt)
