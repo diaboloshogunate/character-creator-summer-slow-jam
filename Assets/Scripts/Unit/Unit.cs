@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Linq;
+using System.Threading.Tasks;
 using Pathfinding;
 using UnityEngine;
 using DG.Tweening;
@@ -12,8 +14,9 @@ namespace DefaultNamespace
     [RequireComponent(typeof(AILerp))]
     public class Unit : MonoBehaviour, IUnitActions
     {
-        [field: SerializeField] public BaseBaseEntityStats BaseStats { get; private set; } = null;
+        [field: SerializeField] public bool IsPlayerUnit { get; private set; }= true;
         [field: SerializeField] public Vector3 DefaultTarget { get; set; } = Vector3.zero;
+        [field: SerializeField] public BaseBaseEntityStats BaseStats { get; private set; } = null;
         [field: SerializeField] public UnitEquipment Equipment { get; private set; } = null;
         public EntityStats Stats { get; private set; } = new EntityStats();
 
@@ -52,15 +55,14 @@ namespace DefaultNamespace
         private void OnEquipmentAddedEvent(EquipmentScriptable arg0) {UpdateMaxStats(); AddGearMesh(arg0);}
         private void OnEquipmentRemovedEvent(EquipmentScriptable arg0) {UpdateMaxStats(); RemoveGearMesh(arg0);}
 
-        public void Move(Vector3 destination)
+        public async Task Move(Vector3 destination)
         {
             Tilemap map = GameManager.Instance.Tilemap;
             Vector3 cellCenterPosition = map.GetCellCenterWorld(map.WorldToCell(destination));
+            
             Path fullPath = Seeker.StartPath(transform.position, cellCenterPosition);
             fullPath.BlockUntilCalculated();// force path to calculate now instead of multithreading
             float cost = fullPath.path.Sum(node => fullPath.GetTraversalCost(node));
-            
-            // this is horrible. will need to find a better astar option since this one does not expose what I need resulting in crap like this
             while (cost > Stats.Movement.Value)
             {
                 fullPath.path.RemoveAt(fullPath.path.Count - 1);
@@ -69,19 +71,36 @@ namespace DefaultNamespace
             
             Path reducedPath = Seeker.StartPath(transform.position, (Vector3) fullPath.path.Last().position);
             reducedPath.BlockUntilCalculated();// force path to calculate now instead of multithreading
+
+            float distanceFromTarget = Vector3.Distance(transform.position, (Vector3) reducedPath.path.Last().position);
+            if (distanceFromTarget >= 0.001f) 
+                await Task.Yield();
         }
 
-        public void Damage(int amt) => Stats.Health.Value -= Mathf.Max(Stats.Defence.Value - amt, 0);
-        
-        public void Heal(int amt) => Stats.Health.Value += Mathf.Max(amt, 0);
+        public async Task Damage(int amt)
+        {
+            Stats.Health.Value -= Mathf.Max(Stats.Defence.Value - amt, 0);
+        }
 
-        public void Die() => Destroy(gameObject);
+        public async Task Heal(int amt)
+        {
+            Stats.Health.Value += Mathf.Max(amt, 0);
+        }
 
-        public void Attack(Unit unit) => unit.Damage(Stats.Attack.Value);
+        public async Task Die()
+        {
+            Destroy(gameObject);
+        }
 
-        public void Refresh()
+        public async Task Attack(Unit unit)
+        {
+            unit.Damage(Stats.Attack.Value);
+        }
+
+        public Task Refresh()
         {
             // todo
+            return null;
         }
 
         private void UpdateMinStats()

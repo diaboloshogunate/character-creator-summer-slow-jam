@@ -56,7 +56,26 @@ namespace DefaultNamespace
                 false, 
                 EnemyUnits, 
                 PlayerUnits, 
-                UnitLayersMask
+                UnitLayersMask,
+                this
+            );
+            TurnManager.Transition(new BeginPhase(Context));
+        }
+        
+
+        public void NextTurn(Context context)
+        {
+            Context = new Context(
+                TurnManager, 
+                UnitFactory, 
+                EnemySpawnBounds, 
+                PlayerSpawnBounds, 
+                context.IsPlayersTurn ? Context.Turn : Context.Turn + 1,
+                !context.IsPlayersTurn, 
+                PlayerUnits, 
+                EnemyUnits, 
+                UnitLayersMask,
+                this
             );
             TurnManager.Transition(new BeginPhase(Context));
         }
